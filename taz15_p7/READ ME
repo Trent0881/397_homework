@@ -1,0 +1,5 @@
+The two playfiles are located at "./baxter_playfile_nodes/guitar_r.jsp" and "./baxter_playfile_nodes/guitar_l.jsp"
+
+Make sure to play the files with the command: "rosrun baxter_playfile_nodes baxter_playback guitar_r.jsp guitar_l.jsp"
+
+I simply added those two playfiles to the baxter_playfile_nodes folder, without removing anything that was there from the learning_ros package.
