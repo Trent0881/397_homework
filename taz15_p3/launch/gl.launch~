@@ -1,0 +1,6 @@
+<launch> 
+<node name= "p3_controller" pkg= "taz15_p3" type= "min_ctl2" /> 
+<node name= "p3_simulator" pkg= "taz15_p3" type= "min_sim2" /> 
+<node name= "p3_command_server" pkg= "taz15_p3" type= "sin_command2" /> 
+<node name= "p3_command_client" pkg= "taz15_p3" type= "sin_command_client2" /> 
+</launch>

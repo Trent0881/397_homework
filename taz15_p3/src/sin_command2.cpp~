@@ -1,0 +1,83 @@
+
+// SIN COMMANDER NODE MODIFIED TO BE AN ACTION SERVER FOR HW3 - TRENT ZIEMER 9/27/2016
+
+#include<ros/ros.h>
+#include<std_msgs/Float64.h>
+#include<actionlib/server/simple_action_server.h>
+#include<taz15_p3/commandActionAction.h>
+//global variables for callback functions to populate for use in main program
+std_msgs::Float64 g_vel_cmd;
+
+// Global pointers so that the callback and int main() can both access the publisher
+
+ros::Publisher * g_pub;
+
+double g_client_command_amplitude;
+double g_client_command_frequency;
+
+class MyActionServer
+{
+private:
+
+	// Action Server stuff
+	actionlib::SimpleActionServer<taz15_p3::commandActionAction> action_server_obj_;
+
+	taz15_p3::commandActionGoal action_goal_obj_;	
+	taz15_p3::commandActionFeedback action_feedback_obj_;
+	taz15_p3::commandActionResult action_result_obj_;
+
+public:
+	MyActionServer();
+
+	~MyActionServer();
+
+	void executeCB(const actionlib::SimpleActionServer<taz15_p3::commandActionAction>::GoalConstPtr & goal);
+};
+
+// MyActionServer class constructor
+MyActionServer::MyActionServer() : action_server_obj_ (nh_, "example_action_thing", boost::bind(&MyActionServer::executeCB, this, _1, false)
+{
+	ROS_INFO("In the class constructor");
+	// Start the server by calling the server objects method
+	action_server_obj_.start();
+}
+
+// method
+void MyActionServer::executeCB(const actionlib::SimpleActionServer<taz15_p3::commandActionAction>::GoalConstPtr & goal)
+{
+	
+
+}
+
+int main(int argc, char **argv) 
+{
+
+    ros::init(argc, argv, "sin_command"); //name this node 
+    // when this compiled code is run, ROS will recognize it as a node called "minimal_simulator" 
+    ros::NodeHandle nh; // node handle 
+
+    g_client_command_amplitude = 5;
+    g_client_command_frequency = 0.5;
+    //simulate accelerations and publish the resulting velocity; 
+
+
+
+    ros::Publisher pub = nh.advertise<std_msgs::Float64>("vel_cmd", 1);
+
+    g_pub = &pub;
+
+   // Continually update vel_cmd, spinning once to potentially update from callback action
+   while(ros::ok())
+	{
+        double vel_cmd = g_client_command_amplitude*sin(g_client_command_frequency*ros::Time::now().toSec());
+	// Assign vel command to publishable object
+        g_vel_cmd.data = vel_cmd;
+	// Now publish
+        g_pub->publish(g_vel_cmd); 
+	// Log info for user to cout        
+	ROS_INFO("Velocity Command Sent out is = %f", g_vel_cmd.data);
+	ros::spinOnce();
+	}
+
+    return 0; // Should never get here, unless roscore dies!
+}

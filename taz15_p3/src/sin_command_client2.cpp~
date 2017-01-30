@@ -1,0 +1,13 @@
+
+// SIN COMMANDER CLIENT NODE - TRENT ZIEMER 9/27/2016
+
+#include<ros/ros.h>
+#include<std_msgs/Float64.h>
+#include<actionlib/server/simple_action_server.h>
+#include<taz15_p3/commandActionAction.h>
+std_msgs::Float64 g_vel_cmd;
+
+int main(int argc, char **argv) {
+    
+    return 0;
+}

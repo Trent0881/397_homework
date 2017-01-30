@@ -1,0 +1,9 @@
+Robot arm homework demonstration instuctions:
+Run the following commands:
+
+1. roslaunch gazebo_ros empty_world.launch
+2. roslaunch big_gazebo_arm big_arm.launch
+3. rosrun big_gazebo_arm sincmd
+
+Which opens gazebo, starts the controller and other initialize tasks, then starts the controllers independant publisher.
+Rates are doubled for each successive link (2nd is twice that of 1st, 3rd is twice that of 2nd).

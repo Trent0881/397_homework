@@ -1,0 +1,4 @@
+<launch>
+  <node name="ctlr" pkg="taz15_p3" type="min_ctl2" output="screen"/>
+  <node name="simu" pkg="taz15_p3" type="min_sim2" output="screen"/>
+</launch>

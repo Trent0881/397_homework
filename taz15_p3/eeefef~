@@ -1,0 +1,39 @@
+
+
+/*
+
+
+// SIN COMMANDER CLIENT NODE - TRENT ZIEMER 9/27/2016
+
+#include<ros/ros.h>
+#include<std_msgs/Float64.h>
+#include <actionlib/client/simple_action_client.h>
+#include<taz15_p3/commandActionAction.h>
+
+// Necessary?
+std_msgs::Float64 g_vel_cmd;
+
+// This function callback is called once we hear that goal is complete
+void doneCB(const actionlib::SimpleClientGoalState & state,
+            const example_action_server::commandActionResultConstPtr & result)
+{
+    // Generic message display on goal completion, from example
+    ROS_INFO("Server responded with state %s", state.toString().c_str());
+    int diff = result->output - result->goal_stamp;
+    ROS_INFO("Result output = %d; goal_stamp = %d; diff = %d",result->output,result->goal_stamp,diff);
+}
+int main(int argc, char **argv)
+{
+        ros::init(argc, argv, "command_action_client_node"); // name the node
+
+// FILL IN
+
+
+
+    return 0;
+}
+
+
+
+*/
+

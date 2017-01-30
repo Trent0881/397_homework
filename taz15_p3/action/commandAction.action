@@ -1,0 +1,10 @@
+# define the goal
+float64 amplitude
+float64 frequency
+float64 cycles
+---
+# define the result
+float64 goal_success
+---
+# define the feedback message
+float64 unused_feedback_message

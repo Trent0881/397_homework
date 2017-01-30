@@ -1,0 +1,4 @@
+<launch>
+  <node name="actserv" pkg="taz15_p3" type="sin_command2" output="screen"/>
+  <node name="actclient" pkg="taz15_p3" type="sin_command_client2" output="screen"/>
+</launch>

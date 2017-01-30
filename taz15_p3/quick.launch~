@@ -1,0 +1,6 @@
+<launch>
+  <node name="ctlr" pkg="taz15_p3" type="min_ctl2" />
+  <node name="simu" pkg="taz15_p3" type="min_sim2" />
+  <node name="actserv" pkg="taz15_p3" type="sin_command2" />
+  <node name="actclient" pkg="taz15_p3" type="sin_command_client2" />
+</launch>
